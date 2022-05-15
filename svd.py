@@ -1268,106 +1268,6 @@ def Generator(Gf,d,VC0 , VI0 , A,ans):
     else:
         return ans  
 
-"""
-
-def VertexCover(G,k,S):
-    if G.edges()==[]:
-        return True,S
-    if k <=0:
-        return False,S
-    dlist=[]
-    G2=G.copy()
-    for i in G:
-        dlist.append([i,G.degree(i)])
-    d=sorted(dlist,key=itemgetter(1), reverse=True)
-    #print(degreelist)
-    newlist=d.copy()
-    totalnbrs=[]
-    for i in range(len(d)):                           #removing degree 0 vertices
-        if d[i][1]==0:
-            G2.remove_node(d[i][0])
-            newlist.remove(d[i])
-    d=newlist.copy()
-    print(d)
-    newlist=d.copy()
-    print(S)
-    if len(d)!=0:
-        v=d[0][0]           #v is the highest degree vertex
-        degv=d[0][1]
-        if d[0][1]==2:
-            for i in G2:
-                for j in G2:
-                    if i<j and G2.has_edge(i,j):
-                        k=k-1
-                        S.append(j)
-        G=G2.copy()
-        
-        
-        if v in G:
-            Gd2=G.copy()
-            vnbr=[n for n in Gd2.neighbors(v)]
-            Gd2.remove_nodes_from(vnbr+[v])
-            S1=S+vnbr
-            return VertexCover(Gd2,k-degv,S1)
-        if v in G:
-            Gd1=G.copy()
-            S2=S.append(v)
-            Gd1.remove_node(v)
-            
-            return VertexCover(Gd1,k-1,S2)
-          
-    else:
-        return True,S
- 
-
-        
-"""
-
-'''
-def VertexCover(G,k,S):
-    if G.edges()==[]:
-        return True
-    if k <=0:
-       return False
-    dlist=[]
-    #G2=G.copy()
-    for i in G:
-        dlist.append([i,G.degree(i)])
-    d=sorted(dlist,key=itemgetter(1), reverse=True)
-    #print(degreelist)
-    newlist=d.copy()
-    totalnbrs=[]
-    for i in range(len(d)):                           #removing degree 0 vertices
-        if d[i][1]==0:
-            G.remove_node(d[i][0])
-            newlist.remove(d[i])
-    d=newlist.copy()
-    print(d)
-    newlist=d.copy()
-    #print(S)
-    if len(d)!=0:
-        v=d[0][0]           #v is the highest degree vertex
-        degv=d[0][1]
-        if d[0][1]<=2:
-            for i in G:
-                for j in G:
-                    if i<j and G.has_edge(i,j):
-                        return True
-
-        Gd2=G.copy()
-        Gd1=G.copy()
-        vnbr=[n for n in Gd2.neighbors(v)]
-        Gd2.remove_nodes_from(vnbr+[v])
-        Gd1.remove_node(v)
-        return VertexCover(Gd1,k-1,S+[v]) or VertexCover(Gd2,k-degv,S+vnbr)
-    else:
-        return True    
-        
-
-
-
-'''
-
 
 def VertexCover(G,k,S):
     if G.edges()==[]:
@@ -1460,22 +1360,7 @@ for i in ans:
             S1.append(i)
     Slist.append(S1)
     #print(Slist)
-'''
-for i in flaglist:
-    if i<=k:
-        print('YES Instance of Vertex Cover and Split vertex deletion.',i)
-        sys.exit()
-print('NO Instance')
 
-'''
-'''
-for i in flaglist:
-    if i==True:
-        print('YES Instance of Vertex Cover and Split vertex deletion.',i)
-        sys.exit()
-print('NO Instance')
-    
-'''
 print('Number of vertices in G=',H.number_of_nodes())
 print('Number of edges in G=',H.number_of_edges())
 print('k=',k)
